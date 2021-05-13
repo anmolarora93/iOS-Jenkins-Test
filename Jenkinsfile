@@ -19,19 +19,22 @@ node {
     }
 }
 
-lane :clean_xcode do |options|
+lane :clean_xcode
+do |options|
   clear_derived_data()
   sh("rm -rf Image\ Picker*zip")
   sh("rm -rf ~/Library/Developer/Xcode/Archives/*")
 end
 
-lane :code_sign do |options|
+lane :code_sign
+do |options|
   method = "development"
   match(readonly: true,
             type: method)
 end
 
-lane :create_build do |options|
+lane :create_build
+do |options|
   scheme = "Image\ Picker"
   configuration = "Debug"
   export_method = "development"
