@@ -9,39 +9,19 @@ node {
         sh "pod install --repo-update"
     }
     stage('Clean') {
-        sh 'fastlane clean_xcode'
+        clear_derived_data()
+        sh("rm -rf Image\ Picker*zip")
+        sh("rm -rf ~/Library/Developer/Xcode/Archives/*")
     }
     stage('Code Sign') {
-        sh 'fastlane codesign method:"development"'
+        method = "development"
+        match(readonly: true, type: method)
     }
     stage('Create Build') {   
-        sh 'fastlane create_build'
+        scheme = "Image\ Picker"
+        configuration = "Debug"
+        export_method = "development"
+        icloud_environment = "Production"
+        gym(scheme: scheme, configuration: configuration, export_options:export_options, output_name:"Image\ Picker.ipa")
     }
 }
-
-lane :clean_xcode
-do |options|
-  clear_derived_data()
-  sh("rm -rf Image\ Picker*zip")
-  sh("rm -rf ~/Library/Developer/Xcode/Archives/*")
-end
-
-lane :code_sign
-do |options|
-  method = "development"
-  match(readonly: true,
-            type: method)
-end
-
-lane :create_build
-do |options|
-  scheme = "Image\ Picker"
-  configuration = "Debug"
-  export_method = "development"
-  icloud_environment = "Production"
-  
-  gym(scheme: scheme,
-      configuration: configuration,
-      export_options:export_options,
-      output_name:"Image\ Picker.ipa")
-end
