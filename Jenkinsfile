@@ -7,8 +7,6 @@ node {
     stage('Environment/Bundles Setup') {
     }
     stage('Clean') {
-        clear_derived_data()
-        sh("rm -rf ~/Library/Developer/Xcode/Archives/*")
     }
     stage('Code Sign') {
         method = "development"
