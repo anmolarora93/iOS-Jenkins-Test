@@ -17,7 +17,7 @@ node {
         match(readonly: true, type: method)
     }
     stage('Create Build') {   
-        scheme = "Image\ Picker"
+        scheme = "Image Picker"
         configuration = "Debug"
         export_method = "development"
         icloud_environment = "Production"
