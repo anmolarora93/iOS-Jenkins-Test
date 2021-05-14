@@ -21,6 +21,6 @@ node {
         configuration = "Debug"
         export_method = "development"
         icloud_environment = "Production"
-        gym(scheme: scheme, configuration: configuration, export_options:export_options, output_name:"Image\ Picker.ipa")
+        gym(scheme: scheme, configuration: configuration, export_options:export_options, output_name:"Image Picker.ipa")
     }
 }
