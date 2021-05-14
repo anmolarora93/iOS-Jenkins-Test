@@ -10,7 +10,6 @@ node {
     }
     stage('Clean') {
         clear_derived_data()
-        sh("rm -rf Image\ Picker*zip")
         sh("rm -rf ~/Library/Developer/Xcode/Archives/*")
     }
     stage('Code Sign') {
