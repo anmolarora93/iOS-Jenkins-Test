@@ -2,7 +2,7 @@ node {
     stage('Checkout') {
         checkout([$class: 'GitSCM', branches: [[name: '*/$branch']], 
             doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], 
-            userRemoteConfigs: [[credentialsId:'/$githubToken' , url: 'gihub project url']]])
+            userRemoteConfigs: [[credentialsId:'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' , url: 'https://github.com/anmolarora93/iOS-Jenkins-Test']]])
     }
     stage('Environment/Bundles Setup') {
         sh "Scripts/change_server.sh $server"
